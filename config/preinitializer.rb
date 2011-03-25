@@ -1,6 +1,6 @@
 # Bundler version we depend on. If you planning to change it,
 # do not forget to update Gemfile and script/bundler_setup as well
-SCRIBD_BUNDLER_VERSION = '0.9.26'
+SCRIBD_BUNDLER_VERSION = '1.0.10'
 SCRIBD_BUNDLER_SETUP   = 'script/bundler_setup'
 
 require 'rubygems'

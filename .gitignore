@@ -5,3 +5,6 @@
 /config/database.yml
 /.bundle
 /tmp
+nbproject/
+Gemfile.lock
+

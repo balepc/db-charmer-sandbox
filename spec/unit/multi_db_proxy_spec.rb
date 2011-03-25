@@ -96,7 +96,7 @@ describe "ActiveRecord model with db_magic" do
         Blah.db_magic :slaves => [ :slave01 ]
       end
 
-      it "should use one tof the model's slaves if no slave given" do
+      it "should use one of the model's slaves if no slave given" do
         Blah.on_slave.db_charmer_connection_proxy.object_id.should == Blah.coerce_to_connection_proxy(:slave01).object_id
       end
 
@@ -108,6 +108,11 @@ describe "ActiveRecord model with db_magic" do
         Blah.on_slave do |m|
           m.db_charmer_connection_proxy.object_id.should == Blah.coerce_to_connection_proxy(:slave01).object_id
         end
+      end
+
+      it 'should consider slave weights' do
+        Blah.db_magic :slaves => [ :slave01, :slave02 ], :weights => { :slave01 => 0, :slave02 => 10 }
+        Blah.on_slave.db_charmer_connection_proxy.object_id.should == Blah.coerce_to_connection_proxy(:slave02).object_id
       end
     end
 
